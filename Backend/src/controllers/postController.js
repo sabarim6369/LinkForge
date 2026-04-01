@@ -3,11 +3,11 @@
  * Handles HTTP requests and responses for post-related endpoints
  */
 
-const Post = require('../../models/Post');
-const postService = require('../../services/post/createPost');
-const { verifyToken } = require('../../utils/tokenManager');
-const logger = require('../../utils/logger');
-const { POST_STATUS, HTTP_STATUS } = require('../../config/constants');
+const Post = require('../models/Post');
+const postService = require('../services/post/createPost');
+const { verifyToken } = require('../utils/tokenManager');
+const logger = require('../utils/logger');
+const { POST_STATUS, HTTP_STATUS } = require('../config/constants');
 
 /**
  * POST /post

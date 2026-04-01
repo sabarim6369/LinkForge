@@ -4,16 +4,16 @@
  * Steps: Fetch → Normalize → Deduplicate → Rank → Generate → Store → Email
  */
 
-const logger = require('../../utils/logger');
+const logger = require('../utils/logger');
 
 // Import services
-const { fetchAllNews } = require('../../services/news/fetchNews');
-const { normalizeAllNews } = require('../../services/news/normalizeNews');
-const { deduplicateNews, groupSimilarNews, selectBestFromGroups } = require('../../services/news/deduplicate');
-const { rankNews, getTopNews } = require('../../services/news/rankNews');
-const { generateMultiplePosts } = require('../../services/ai/generatePost');
-const postService = require('../../services/post/createPost');
-const { sendEmailDigest } = require('../../services/email/sendDigest');
+const { fetchAllNews } = require('../services/news/fetchNews');
+const { normalizeAllNews } = require('../services/news/normalizeNews');
+const { deduplicateNews, groupSimilarNews, selectBestFromGroups } = require('../services/news/deduplicate');
+const { rankNews, getTopNews } = require('../services/news/rankNews');
+const { generateMultiplePosts } = require('../services/ai/generatePost');
+const postService = require('../services/post/createPost');
+const { sendEmailDigest } = require('../services/email/sendDigest');
 
 /**
  * Execute the complete daily pipeline
