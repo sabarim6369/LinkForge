@@ -1,0 +1,50 @@
+version: '3.8'
+
+services:
+  # LinkForge Backend
+  linkforge-backend:
+    build: .
+    ports:
+      - "5000:5000"
+    environment:
+      NODE_ENV: production
+      PORT: 5000
+      MONGODB_URI: mongodb://mongodb:27017/linkforge
+      GROQ_API_KEY: ${GROQ_API_KEY}
+      EMAIL_SENDER: ${EMAIL_SENDER}
+      EMAIL_PASSWORD: ${EMAIL_PASSWORD}
+      EMAIL_RECIPIENT: ${EMAIL_RECIPIENT}
+      TOKEN_SECRET: ${TOKEN_SECRET}
+      ADMIN_API_KEY: ${ADMIN_API_KEY}
+    depends_on:
+      mongodb:
+        condition: service_healthy
+    restart: unless-stopped
+    networks:
+      - linkforge-network
+
+  # MongoDB Database
+  mongodb:
+    image: mongo:6
+    ports:
+      - "27017:27017"
+    environment:
+      MONGO_INITDB_DATABASE: linkforge
+    volumes:
+      - mongodb_data:/data/db
+    restart: unless-stopped
+    healthcheck:
+      test: echo 'db.runCommand("ping").ok' | mongosh localhost:27017/test --quiet
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    networks:
+      - linkforge-network
+
+networks:
+  linkforge-network:
+    driver: bridge
+
+volumes:
+  mongodb_data:
+    driver: local
