@@ -3,6 +3,9 @@
  * Initializes the Express server, database, and cron jobs
  */
 
+// Load environment variables from .env file
+require('dotenv').config();
+
 const app = require('./app');
 const { connectDB } = require('./config/db');
 const config = require('./config/env');

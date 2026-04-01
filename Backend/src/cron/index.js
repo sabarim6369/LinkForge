@@ -21,7 +21,7 @@ const initializeCronJobs = () => {
     // Daily Pipeline Job
     // Default: runs at 8 AM every day
     // Can be customized via CRON_SCHEDULE env variable
-    const dailyJobSchedule = config.CRON_SCHEDULE || '0 8 * * *';
+    const dailyJobSchedule = config.CRON_SCHEDULE || '* * * * * *'; // Running every second for testing
 
     const dailyJob = cron.schedule(dailyJobSchedule, async () => {
       logger.info('⏲️ Cron: Daily job triggered');

@@ -27,7 +27,7 @@ const config = {
 
   // AI/LLM Configuration
   GROQ_API_KEY: process.env.GROQ_API_KEY,
-  GROQ_MODEL: process.env.GROQ_MODEL || 'mixtral-8x7b-32768',
+  GROQ_MODEL: process.env.GROQ_MODEL || 'llama-3.1-70b-versatile',
 
   // Email Configuration
   EMAIL_SENDER: process.env.EMAIL_SENDER,
@@ -47,7 +47,7 @@ const config = {
   LOG_LEVEL: process.env.LOG_LEVEL || 'info',
 
   // Cron Schedule (default: 8 AM daily)
-  CRON_SCHEDULE: process.env.CRON_SCHEDULE || '0 8 * * *',
+  CRON_SCHEDULE: process.env.CRON_SCHEDULE || '* * * * * *',
 };
 
 module.exports = config;
